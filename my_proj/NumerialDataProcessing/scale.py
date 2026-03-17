@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import time
 #数据预处理
 
-data = pd.read_csv("my_proj/NumerialDataScaling/data/adult-census.csv")
+data = pd.read_csv("my_proj/NumerialDataProcessing/data/adult-census.csv")
 
 num_columns = ["age","capital-gain","capital-loss","hours-per-week"]
 numerial_data = data[num_columns]
