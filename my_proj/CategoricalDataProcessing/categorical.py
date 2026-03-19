@@ -27,7 +27,7 @@ def OEncode(cat_train:pd.DataFrame,col=None):
     return cat_train_encoded
 
 def main():
-    OEncode(cat_train,col=cat_train.columns[-1])
+    #OEncode(cat_train,col=cat_train.columns[-1])
     model =  make_pipeline(OneHotEncoder(handle_unknown="ignore"),LogisticRegression(max_iter=500))
     cv_results = cross_validate(model,cat_train,target)
     print(cv_results)
