@@ -5,10 +5,13 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import ShuffleSplit, cross_validate,ValidationCurveDisplay,LearningCurveDisplay
-import joblib
+from joblib import register_parallel_backend
+from joblib._parallel_backends import ThreadingBackend
 import time
 
 def main():
+    register_parallel_backend("threading", ThreadingBackend, make_default=True)
+
     start_time = time.time()
     data_raw = pd.read_csv("my_proj/ExerciseM2.01/data/blood_transfusion.csv")
     target_name = "Class"
@@ -47,6 +50,7 @@ def main():
         score_name="Accuracy",
         std_display_style="errorbar",
         errorbar_kw={"alpha": 0.7},
+        n_jobs=-1
     )
 
     display1.ax_.set(xscale="log",title="ValidationCurve For SVC")
@@ -61,6 +65,7 @@ def main():
         score_name="Accuracy",
         std_display_style="errorbar",
         errorbar_kw={"alpha": 0.7},
+        n_jobs=-1
     )
 
     display2.ax_.set(title="LearningCurve For SVC")
@@ -68,5 +73,4 @@ def main():
     plt.show()
 
 if __name__ == "__main__":
-    with joblib.parallel_backend(backend='threading', n_jobs=1):
-        main()
+    main()
