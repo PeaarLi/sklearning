@@ -253,7 +253,7 @@ def main():
     #plt.close(fig6)
     #plt.close(fig7)
     #plt.close(fig8)
-    #plt.show()
+    plt.show()
 
     output_folder = "my_proj/Courses/Non-linear feature engineering for Logistic Regression/OUTPUT/"
     fig1.savefig(output_folder + "Logistic_regression_decision_boundaries.png")
@@ -264,7 +264,6 @@ def main():
     fig6.savefig(output_folder + "Logistic_regression_decision_boundaries_with_Nystroem(RBF).png")
     fig7.savefig(output_folder + "Logistic_regression_decision_boundaries_with_KBins+Nystroem(RBF).png")
     fig8.savefig(output_folder + "Logistic_regression_decision_boundaries_with_Spline+Nystroem(RBF).png")
-
     
 if __name__ == "__main__":
     main()
